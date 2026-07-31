@@ -1,17 +1,28 @@
 <script setup>
 import { ref } from 'vue'
 
-// 1. 배열 렌더링 (v-for)
 const weatherList = ref([
   { id: 'city_01', name: '서울', temp: 28, status: '맑음' },
   { id: 'city_02', name: '수원', temp: 24, status: '비' },
   { id: 'city_03', name: '부산', temp: 26, status: '구름' },
 ])
 
-// 2. 조건부 렌더링 (v-if)
+const searchQuery = ref('')
 </script>
 
 <template>
+  <section class="search-box">
+    <h3>🔍 도시 검색</h3>
+    <input
+      type="text"
+      :value="searchQuery"
+      @input="(e) => (searchQuery = e.target.value)"
+      placeholder="검색할 도시 이름 입력"
+    />
+    <p>
+      검색 중인 도시: <strong>{{ searchQuery }}</strong>
+    </p>
+  </section>
   <section class="list-box">
     <h3>날씨 현황</h3>
     <div v-for="item in weatherList" :key="item.id" class="weather-card">
