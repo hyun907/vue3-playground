@@ -8,6 +8,11 @@ const weatherList = ref([
 ])
 
 const searchQuery = ref('')
+const selectedCityInfo = ref('카드를 클릭하거나 검색해 보세요.')
+
+const showDetail = (cityName, status) => {
+  window.alert(`${cityName}의 현재 날씨는 [${status}] 상태입니다.`)
+}
 </script>
 
 <template>
@@ -25,14 +30,24 @@ const searchQuery = ref('')
   </section>
   <section class="list-box">
     <h3>날씨 현황</h3>
-    <div v-for="item in weatherList" :key="item.id" class="weather-card">
+    <div
+      v-for="item in weatherList"
+      :key="item.id"
+      class="weather-card"
+      @click="selectedCityInfo = `${item.name}이 선택되었습니다.`"
+    >
       <h4>{{ item.name }} ({{ item.status }})</h4>
       <p>현재 기온: {{ item.temp }}°C</p>
 
       <span v-if="item.temp >= 25" class="badge hot">🔥 더움 (25도 이상)</span>
       <span v-else class="badge cool">❄️ 선선함 (25도 미만)</span>
+
+      <button class="btn-detail" @click.stop="showDetail(item.name, item.status)">상세보기</button>
     </div>
   </section>
-</template>
 
+  <div class="status-bar">
+    {{ selectedCityInfo }}
+  </div>
+</template>
 <style></style>
