@@ -14,6 +14,9 @@ const weatherList = ref([
   { id: 'city_01', name: '서울', temp: 28, status: '맑음' },
   { id: 'city_02', name: '수원', temp: 24, status: '비' },
   { id: 'city_03', name: '부산', temp: 26, status: '구름' },
+  { id: 'city_04', name: '대구', temp: 22, status: '흐림' },
+  { id: 'city_05', name: '광주', temp: 30, status: '맑음' },
+  { id: 'city_09', name: '제주', temp: 29, status: '맑음' },
 ])
 
 // 2. [1일차 데이터] 검색어 및 알림창 제어용 데이터
